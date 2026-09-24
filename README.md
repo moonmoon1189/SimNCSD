@@ -47,3 +47,13 @@ SimNCSD/
 ├── generate_mock_data.py         # Script to generate dummy data for quick testing
 ├── main.py                       # Main execution pipeline
 └── requirements.txt              # Environment dependencies
+
+⚙️ Installation
+Clone this repository:Bash git clone [https://github.com/moonmoon1189/SimNCSD.git](https://github.com/moonmoon1189/SimNCSD.git)
+cd SimNCSD
+Install the required dependencies:Bash pip install -r requirements.txt
+(Note: If you encounter issues with torchaudio on Windows, please run pip uninstall torchaudio -y
+🚀 Quick Start1. Generate Mock DataSince the full datasets are large and require specific partitioning, we provide a script to generate formatted dummy data to verify the pipeline:Bashpython generate_mock_data.py
+2. Run the Full PipelineExecute the main script to start the two-stage training and final evaluation:Bashpython main.py
+This script will automatically:Load the pre-trained hfl/chinese-roberta-wwm-ext model.Perform Stage 1: Contrastive Fine-Tuning (optimizing InfoNCE loss).Perform Stage 2: Classifier Training with Multi-Channel Fusion.Evaluate on the test set using the dynamically calibrated threshold.Generate performance visualization plots in outputs/figures/.
+📊 Expected OutputsUpon successful execution, the model will output the following metrics on the test set:Validation Calibrated Threshold ($\gamma$)AccuracyPrecisionRecallF1-ScoreAUCAdditionally, the following visualization plots will be saved in outputs/figures/:roc_curve.png: Receiver Operating Characteristic curve.confusion_matrix.png: Heatmap of classification results.prob_distribution.png: Density distribution of predicted probabilities with the calibrated decision boundary.
