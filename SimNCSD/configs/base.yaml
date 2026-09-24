@@ -1,0 +1,21 @@
+model:
+  pretrained_model_name_or_path: "hfl/chinese-roberta-wwm-ext"
+  projection_dim: 256
+  hidden_size: 768
+  max_length: 128
+  temperature: 0.05
+  mlp_hidden_1: 512
+  mlp_hidden_2: 256
+  dropout: 0.1
+
+training:
+  batch_size: 64
+  temperature: 0.05  # <--- 在这里加上这一行
+  learning_rate_contrastive: 2.0e-5
+  learning_rate_classifier: 2.0e-5
+  weight_decay: 0.01
+  epochs_contrastive: 10
+  epochs_classifier: 10
+  warmup_ratio: 0.1
+  patience: 3
+  seed: 42
